@@ -13,4 +13,5 @@
 
 ## Example Run
 
+    cd nlp_urdu
     python3 step-1-corpus-creator.py

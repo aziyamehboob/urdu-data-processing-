@@ -1,11 +1,10 @@
-from nltk.corpus import PlaintextCorpusReader
 import os.path
-
+from urdu_corpus_reader import UrduCorpusReader
 
 if '__main__' == __name__:
 
-    corpus_root = os.path.abspath('./raw_urdu_data')
-    wordlists = PlaintextCorpusReader(corpus_root, '.*')
+    corpus_root = os.path.abspath('../raw_urdu_data')
+    wordlists = UrduCorpusReader(corpus_root, '.*')
 
     print("Loaded corpus with file IDs: ")
     print(wordlists.fileids())
