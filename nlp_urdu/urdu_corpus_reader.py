@@ -50,7 +50,7 @@ class UrduCorpusReader(CorpusReader):
                 current_sent += ch
 
         if current_sent:
-            sents_lsit.append(current_sent)
+            sents_list.append(current_sent)
 
         return sents_list
 
