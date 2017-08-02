@@ -25,6 +25,7 @@ if '__main__' == __name__:
         for s in wordlists.sents(infile):
             rd = s
             print(rd)
+            output_file.write('\nSentence\n')
             output_file.write(rd)
             #############################################################
         
