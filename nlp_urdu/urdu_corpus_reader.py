@@ -5,9 +5,8 @@ Natural Language Toolkit: Urdu Language POS-Tagged (not yet) Corpus Reader
 from six import string_types
 
 from nltk.tag import str2tuple, map_tag
-
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from nltk.corpus.reader.util import concat
+from nltk.corpus.reader.api import CorpusReader
 
 
 class UrduCorpusReader(CorpusReader):
@@ -18,6 +17,18 @@ class UrduCorpusReader(CorpusReader):
         u'\u061F'  # Arabic question mark
     ]
 
+    PUNCTUATIONS = [
+        '.', '/', ':', ';', '-', '*', ')', '(', '/', '\n', '\r',
+        u'\u06D4',   # arabic full stop
+        u'\u061F',   # Arabic question mark
+        u'\u061B',   # ARABIC SEMICOLON
+        u'\u066D',   # ARABIC FIVE POINTED STAR
+        u'\u2018',   # LEFT SINGLE QUOTATION MARK
+        u'\u2019',   # Right Single Quotation Mark
+        u'\u0027',   # APOSTROPHE
+        u'\u060c'    # ARABIC COMMA
+    ]
+
     def words(self, fileids=None):
         """
         List of words, one per line.  Blank lines are ignored.
@@ -26,7 +37,10 @@ class UrduCorpusReader(CorpusReader):
         for filepath in self.abspaths(fileids=fileids):
             print(filepath)
             data = open(filepath, 'r').read()
-            words_list = data.split(' ')
+            for p in self.PUNCTUATIONS:
+                data = data.replace(p, ' ')
+
+            words_list.extend([w for w in data.split(' ') if w])
 
         return words_list
 
@@ -39,7 +53,7 @@ class UrduCorpusReader(CorpusReader):
             for ch in data:
                 if ch in ['\r', '\n']:  # ignore new lines
                     continue
-                
+
                 if ch in self.SENT_SEPS:
                     if current_sent:
                         sents_list.append(current_sent)
