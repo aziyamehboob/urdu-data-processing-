@@ -18,7 +18,7 @@ class UrduCorpusReader(CorpusReader):
     ]
 
     PUNCTUATIONS = [
-        '.', '/', ':', ';', '-', '*', ')', '(', '/', '\n', '\r',
+        '.', '/', ':', ';', '-', '*', ')', '(', '/', '\n', '\r', '`', '%', '&', '>', '<', '|',
         u'\u06D4',   # arabic full stop
         u'\u061F',   # Arabic question mark
         u'\u061B',   # ARABIC SEMICOLON
