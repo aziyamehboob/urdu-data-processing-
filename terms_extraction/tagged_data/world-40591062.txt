@@ -1,0 +1,1 @@
+شام/NN میں/P شدت/NN پسند/NN تنظیم/NN دولت/NN اسلامیہ/PN کے/P خلاف/NN جاری/ADJ جنگ/NN کا/P رخ/NN اب/AP رقہ/NN کی/P جانب/NN موڑ/VB دیا/AA گیا/AA ہے/TA جہاں/AP سے/SE عام/ADJ شہری/ADJ جان/NN بچا/VB کر/KER بھاگنے/VB کی/P کوشش/NN کر/VB تو/I رہے/AA ہیں/TA لیکن/SC انھیں/PP یہ/PP نہیں/NEG معلوم/ADJ کے/P جانا/VB کہاں/AKP ہے/TA
