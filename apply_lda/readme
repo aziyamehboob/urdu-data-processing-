@@ -1,0 +1,7 @@
+ 
+filters:
+1: NP{<ADJ><NN>*}
+2:NP:{<NN><NN>}
+3:NP:{<NN>*}
+4{<NN.*|JJ>*<NN.*>}  # Nouns and Adjectives, terminated with Nouns just for trying 
+5:{<ADJ>|<NN>+<NN>}
