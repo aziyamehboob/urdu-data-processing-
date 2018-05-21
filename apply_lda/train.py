@@ -50,7 +50,11 @@ class Corpus(object):
             print('{}\n'.format('Topic #' + str(i + 1) + ': '))
             for word, prob in lda.show_topic(i, topn=10):
                 top_cluster[word] = prob
+<<<<<<< HEAD
                 #print(top_cluster)
+=======
+                print(top_cluster)
+>>>>>>> e7aa29ea5bd25cbe4c0933321cf0b68cbe9ef215
             
             topics.append(top_cluster)
                 

@@ -315,7 +315,11 @@ if __name__ == '__main__':
     topics_list = cor.run(lda_model_path,corpus,lda_num_topics, dictionary)
     print(topics_list)
     output_file =  os.path.abspath('./Labels/' + sys.argv[1])
+<<<<<<< HEAD
     json.dump(topics_list, open(output_file, 'w'),ensure_ascii=False)
+=======
+    json.dump(topics_list, open(output_file, 'w'))
+>>>>>>> e7aa29ea5bd25cbe4c0933321cf0b68cbe9ef215
     print("Topics list dumped into: " + output_file)
     
     # Note: To load the list back: 
