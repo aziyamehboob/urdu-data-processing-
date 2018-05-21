@@ -1,0 +1,1 @@
+شمالی/ADJ کوریا/PN ایسا/PP ملک/NN ہے/VB جہاں/AP سے/SE کوئی/Q خبر/NN باہر/NN نہیں/NEG آتی/VB یہ/PP وہ/PP چار/CA شمالی/ADJ کوریائی/NN باشندے/NN ہیں/VB جو/REP وہاں/AP سے/SE بھاگ/VB نکلنے/VB میں/P کامیاب/ADJ ہو/VB گئے/AA یہ/PP بتا/VB رہے/AA ہیں/TA کہ/SC وہاں/AP زندگی/NN کیسی/AKP ہے/TA اور/CC انہیں/PP کیا/QW یاد/NN آتا/VB ہے/TA

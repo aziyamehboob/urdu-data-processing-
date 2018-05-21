@@ -2,8 +2,8 @@ import subprocess
 import os.path
 from urdu_corpus_reader import UrduCorpusReader
 import re
-from lda2 import *
-from lsi import *
+#from lda2 import *
+#from lsi import *
 import logging
 import re
 import operator
@@ -13,7 +13,7 @@ import numpy as np
 from gensim import corpora, models
 from gensim.models import CoherenceModel, LdaModel, LsiModel, HdpModel
 from collections import defaultdict
-from lda1 import default_lda_model
+#from lda1 import default_lda_model
 
 newpath = 'new_output' 
 if not os.path.exists(newpath):
@@ -24,7 +24,7 @@ if not os.path.exists(newpath):
 
 if '__main__' == __name__:
 
-    corpus_root = os.path.abspath('../scrap/final_data_set')
+    corpus_root = os.path.abspath('../scrap/urdu_results')
     wordlists = UrduCorpusReader(corpus_root, '.*')
     noun = []
 

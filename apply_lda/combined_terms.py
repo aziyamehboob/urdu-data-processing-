@@ -4,6 +4,7 @@ from urdu_corpus_reader import UrduCorpusReader
 import nltk
 from nltk import sent_tokenize, word_tokenize, pos_tag
 import glob
+import json
 import sys, os
 from math import log
 import itertools
@@ -27,9 +28,9 @@ class CorpusProcessor(object):
     """
     MIN_FREQ = 1
     MIN_CVAL = -13 # lowest cval -13
-    def __init__(self):
-        #corpus_root = os.path.abspath('../multiwords/Data_set/category-sports/train_sports')
-        corpus_root = os.path.abspath('../multiwords/Data_set/category-'+sys.argv[1]+'/train')
+    def __init__(self, corpus_root):
+        # corpus_root = os.path.abspath('../multiwords/Data_set/category-sports/train_sports')
+        # corpus_root = os.path.abspath('../multiwords/Data_set/category-'+sys.argv[1]+'/train')
         
         self.corpus = nltk.corpus.reader.TaggedCorpusReader(corpus_root,'.*')
         self.word_count_by_document = None
@@ -255,6 +256,7 @@ class CorpusProcessor(object):
         it's count
         """
         stopwords = open('data/stopwords-ur.txt', 'r').read().split()
+        stopwords_multi = open('data/multi_stopwords-ur.txt', 'r').read()
         lda_input = []
       
  
@@ -265,9 +267,9 @@ class CorpusProcessor(object):
             #print("cvalue doc count",len(cvdc))
             #print(cvdc)
             for t, tc in cvdc.items():
-                #print(len(t))
-                for _ in range(tc):
-                    doc_word_list.append(t)
+                if t not in stopwords_multi:
+                    for _ in range(tc):
+                        doc_word_list.append(t)
             
             for w, wc in dwc.items():
                 if  w not in stopwords:
@@ -283,11 +285,16 @@ class CorpusProcessor(object):
         
     
 if __name__ == '__main__':
+    
+    if 2 != len(sys.argv):
+        print("\nUsage: %s category_name\n" % sys.argv[0])
+        sys.exit(1)
+
     cor = Corpus()
 
-    cp = CorpusProcessor()
+    corpus_root = os.path.abspath('./Data_set/category-' + sys.argv[1] + '/train')
+    cp = CorpusProcessor(corpus_root)
 
-  
     cp.do_word_count_by_document()
     cp.do_cvalue()
     cp.calculate_cvalue_term_freqs_by_document()
@@ -305,12 +312,11 @@ if __name__ == '__main__':
     corpus=corpora.MmCorpus('/tmp/corpus_file.mm')
     #print('Number of unique tokens after saving : %d' % len(dictionary))
     #print('Number of documents after saving the filei: %d' % len(corpus))
-    cor.run(lda_model_path,corpus,lda_num_topics, dictionary)
-    #lda = LdaModel.load(lda_model_path)
-    #lda, corpus_lda, topic_clusters, topic_wordonly = generateTopics(corpus, dictionary)
-   # for i in topic_wordonly:
-        #print (i)
-    #for i, topic in enumerate(lda.show_topics(num_topics=lda_num_topics)):
-        #print ('#%i: %s' %(i, str(topic)))
-  
+    topics_list = cor.run(lda_model_path,corpus,lda_num_topics, dictionary)
+    print(topics_list)
+    output_file =  os.path.abspath('./Labels/' + sys.argv[1])
+    json.dump(topics_list, open(output_file, 'w'),ensure_ascii=False)
+    print("Topics list dumped into: " + output_file)
     
+    # Note: To load the list back: 
+    # l = json.load(open('Labels/sports'))
