@@ -1,0 +1,5 @@
+numpy
+sklearn
+lda
+nltk
+toolz
